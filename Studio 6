@@ -1,5 +1,7 @@
 function my_map(f, xs) {
-    return accumulate(f, null, xs);
+    return is_null(xs)
+            ? null
+            : accumulate(my_map, null, xs);
 }
 
 // Test
@@ -7,10 +9,13 @@ my_map(x => x + 1, list(1, 2, 3));
 // Result: list(2, 3, 4)
 
 function remove_duplicates(lst) {
-    function exist(x) {
-        return member(x, lst);
+    function same(x) {
+        function search(n) {
+            return list_ref(lst, n);
+        }
+        return x === my_map(search, enum_list(0, length(lst) - 1));
     }
-    return filter(exist, lst);
+    return filter(same, lst);
 }
 
 remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
