@@ -69,6 +69,7 @@ function merge(xs, ys) {
                : pair(y, merge(xs, tail(ys)));
     }
 }
+// big Omega(n)
 
 // a list with more than one element is sorted
 // by splitting it into two lists of (almost) equal
@@ -83,6 +84,7 @@ function merge_sort(xs) {
                      merge_sort(drop(xs, mid)));
     }
 }
+// big Theta(n^2)
 
 // Test
 merge_sort(list(7, 6, 3, 8, 4, 6, 5, 9, 8, 3, 1, 5, 2));
