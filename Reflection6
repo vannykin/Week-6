@@ -95,7 +95,15 @@ function merge_sort(xs) {
                      merge_sort(drop(xs, mid)));
     }
 }
-// big Theta(n^2)
+// split list until each list has one element
+// then merge (while sorting)
+// e.g. list is 7, 2, 1, 8, 5, 4, 3, 6
+// after first merging, [2 7], [1 8], [4 5], [3 6]
+// after second merging, [1 2 7 8], [3 4 5 6]
+// lastly, 1 2 3 4 5 6 7 8 will be derived
+// const mid = middle(length(xs)) has time complexity of n / 2
+// take(xs, mid) and drop(xs, mid) each have same time complexity of n / 2
+// big theta(nlog(n))
 
 // Test
 merge_sort(list(7, 6, 3, 8, 4, 6, 5, 9, 8, 3, 1, 5, 2));
